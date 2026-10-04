@@ -15,7 +15,7 @@
             <mat-error>{{ 'clientForm.orgInvalid' | translate }}</mat-error>
           }
         </mat-form-field>
-        <button mat-stroked-button type="button" (click)="lookup()">
+        <button mat-stroked-button type="button" (click)="lookup()" data-testid="org-lookup">
           @if (lookingUp()) {
             <mat-spinner diameter="18" />
           } @else {
@@ -25,7 +25,7 @@
         </button>
       </div>
       @if (lookupMessage()) {
-        <p class="lookup-msg">{{ lookupMessage()! | translate }}</p>
+        <p class="lookup-msg" data-testid="lookup-message">{{ lookupMessage()! | translate }}</p>
       }
 
       <mat-form-field appearance="outline" class="full">

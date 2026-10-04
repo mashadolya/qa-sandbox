@@ -34,7 +34,15 @@
 @if (loading()) {
   <div class="list-loading"><mat-spinner diameter="40" /></div>
 } @else {
-  <table mat-table [dataSource]="paged()" class="client-table">
+  <table
+    mat-table
+    [dataSource]="paged()"
+    class="client-table"
+    data-testid="client-table"
+    [attr.data-sort-column]="state.sortColumn()"
+    [attr.data-sort-dir]="state.sortDir()"
+    [attr.data-search]="state.search()"
+  >
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>
         <button mat-button (click)="sortBy('name')">
@@ -109,7 +117,7 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns" data-testid="client-row"></tr>
   </table>
 
   @if (total() === 0) {
