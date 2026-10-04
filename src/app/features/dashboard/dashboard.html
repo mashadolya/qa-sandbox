@@ -8,31 +8,31 @@
   <div class="dash-grid">
     <mat-card class="dash-card">
       <mat-card-content>
-        <div class="dash-value">{{ activeClients() | number: '1.0-0' : locale() }}</div>
+        <div class="dash-value" data-testid="stat-active-clients">{{ activeClients() | number: '1.0-0' : locale() }}</div>
         <div class="dash-label">{{ 'dashboard.activeClients' | translate }}</div>
       </mat-card-content>
     </mat-card>
 
     <mat-card class="dash-card">
       <mat-card-content>
-        <div class="dash-value">{{ totalClients() | number: '1.0-0' : locale() }}</div>
+        <div class="dash-value" data-testid="stat-total-clients">{{ totalClients() | number: '1.0-0' : locale() }}</div>
         <div class="dash-label">{{ 'dashboard.totalClients' | translate }}</div>
       </mat-card-content>
     </mat-card>
 
     <mat-card class="dash-card">
       <mat-card-content>
-        <div class="dash-value">{{ hoursThisWeek() | number: '1.0-1' : locale() }}</div>
+        <div class="dash-value" data-testid="stat-hours-week">{{ hoursThisWeek() | number: '1.0-1' : locale() }}</div>
         <div class="dash-label">{{ 'dashboard.hoursThisWeek' | translate }}</div>
       </mat-card-content>
     </mat-card>
 
     <mat-card class="dash-card dash-card--wide">
       <mat-card-content>
-        <div class="dash-value">
+        <div class="dash-value" data-testid="stat-billable-nok">
           {{ billableNok() | number: '1.0-0' : locale() }} <span class="dash-unit">kr</span>
         </div>
-        <div class="dash-sub">≈ {{ billableEur() | number: '1.2-2' : locale() }} €</div>
+        <div class="dash-sub" data-testid="stat-billable-eur">≈ {{ billableEur() | number: '1.2-2' : locale() }} €</div>
         <div class="dash-label">{{ 'dashboard.billableThisWeek' | translate }}</div>
       </mat-card-content>
     </mat-card>

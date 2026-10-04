@@ -4,7 +4,7 @@
     <button mat-icon-button (click)="prevWeek()" [attr.aria-label]="'time.prev' | translate">
       <mat-icon>chevron_left</mat-icon>
     </button>
-    <span class="week-label">{{ 'time.week' | translate }} {{ weekNumber() }}</span>
+    <span class="week-label" data-testid="week-label">{{ 'time.week' | translate }} {{ weekNumber() }}</span>
     <button mat-icon-button (click)="nextWeek()" [attr.aria-label]="'time.next' | translate">
       <mat-icon>chevron_right</mat-icon>
     </button>
@@ -49,7 +49,7 @@
       <button mat-flat-button color="primary" type="submit">{{ 'time.add' | translate }}</button>
     </form>
     @if (selectedHoliday()) {
-      <p class="holiday-warning">
+      <p class="holiday-warning" data-testid="holiday-warning">
         <mat-icon>warning</mat-icon>
         {{ 'time.holidayWarning' | translate }} — {{ selectedHoliday() }}
       </p>
@@ -62,12 +62,17 @@
 } @else {
   <div class="day-list">
     @for (day of days(); track day.iso) {
-      <mat-card class="day-card" [class.is-holiday]="day.holiday">
+      <mat-card
+        class="day-card"
+        [class.is-holiday]="day.holiday"
+        data-testid="day-card"
+        [attr.data-date]="day.iso"
+      >
         <mat-card-content>
           <div class="day-head">
             <span class="day-name">{{ day.date | date: 'EEEE d. MMM' : '' : locale() }}</span>
             @if (day.holiday) {
-              <span class="holiday-badge">
+              <span class="holiday-badge" data-testid="holiday-badge">
                 <mat-icon>flag</mat-icon> {{ day.holiday }}
               </span>
             }
@@ -78,16 +83,16 @@
           } @else {
             <ul class="entry-list">
               @for (e of day.entries; track e.id) {
-                <li class="entry-row">
+                <li class="entry-row" data-testid="time-entry">
                   <span class="entry-time">{{ e.startTime }}–{{ e.endTime }}</span>
                   <span class="entry-client">{{ clientName(e.clientId) }}</span>
                   <span class="entry-comment">{{ e.comment }}</span>
-                  <span class="entry-duration">{{ durationLabel(e) }}</span>
+                  <span class="entry-duration" data-testid="entry-duration">{{ durationLabel(e) }}</span>
                   @if (e.isBillable) {
                     <mat-icon class="entry-billable" [attr.aria-label]="'time.billable' | translate">paid</mat-icon>
                   }
                   @if (isAdmin()) {
-                    <button mat-icon-button (click)="remove(e)">
+                    <button mat-icon-button (click)="remove(e)" data-testid="time-entry-delete">
                       <mat-icon>delete</mat-icon>
                     </button>
                   }

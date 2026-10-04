@@ -100,13 +100,24 @@
   } @else {
     <div class="task-list">
       @for (task of sortedTasks(); track task.id) {
-        <mat-card class="task-card" [class.is-overdue]="isOverdue(task)" [class.is-done]="task.status === 'done'">
+        <mat-card
+          class="task-card"
+          [class.is-overdue]="isOverdue(task)"
+          [class.is-done]="task.status === 'done'"
+          data-testid="task-card"
+          [attr.data-status]="task.status"
+        >
           <mat-card-content class="task-row">
             <span class="task-prio" [attr.data-prio]="task.priority">{{ 'priority.' + task.priority | translate }}</span>
             <span class="task-title">{{ task.title }}</span>
             <span class="task-status">{{ 'taskStatus.' + task.status | translate }}</span>
             <span class="task-assignee">{{ assigneeName(task.assigneeUserId) }}</span>
-            <span class="task-due" [class.overdue]="isOverdue(task)">
+            <span
+              class="task-due"
+              [class.overdue]="isOverdue(task)"
+              data-testid="task-due"
+              [attr.data-overdue]="isOverdue(task)"
+            >
               {{ task.dueDate | date: 'd. MMM y' : '' : locale() }}
             </span>
             <span class="task-actions">

@@ -65,7 +65,7 @@ If a service is unreachable the app degrades gracefully and stays usable.
 A minimal, working setup ships so you don't have to configure anything:
 
 - [`playwright.config.ts`](./playwright.config.ts) — Chromium, points at the app, and **starts the server for you**
-- [`e2e/smoke.spec.ts`](./e2e/smoke.spec.ts) — one passing test (logs in, checks the dashboard) as a starting point
+- [`e2e/tests/smoke.spec.ts`](e2e/tests/smoke.spec.ts) — one passing test (logs in, checks the dashboard) as a starting point
 
 One-time, install the browser binary:
 

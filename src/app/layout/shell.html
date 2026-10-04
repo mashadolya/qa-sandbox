@@ -36,7 +36,7 @@
     {{ 'shell.reset' | translate }}
   </button>
 
-  <button mat-button [matMenuTriggerFor]="userMenu">
+  <button mat-button [matMenuTriggerFor]="userMenu" data-testid="user-menu">
     <mat-icon>account_circle</mat-icon>
     {{ displayName() }}
   </button>
